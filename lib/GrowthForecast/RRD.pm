@@ -9,6 +9,7 @@ use File::Temp;
 use File::Zglob;
 use File::Path qw//;
 use Log::Minimal;
+use CGI;
 $Log::Minimal::AUTODUMP =1;
 
 sub new {
@@ -415,6 +416,7 @@ sub _escape {
     my $self = shift;
     my $data = shift;
     $data =~ s{:}{\\:}g;
+    $data = CGI::unescape($data);
     return $data;
 }
 
