@@ -112,6 +112,7 @@ $proclet->service(
             rrdcached => $rrdcached,
         );
         my $app = builder {
+            enable "Plack::Middleware::ContentLength";
             enable 'Lint';
             enable 'StackTrace';
             if ( @front_proxy ) {
